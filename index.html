@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NEXUS2 – Complete Web Development Learning Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ========== BASE ========== */
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{margin:0;background:#050505;color:#eaeaea;scroll-behavior:smooth}
+h1,h2,h3{color:#00f7ff}
+p{line-height:1.8}
+code{color:#9dffea}
+
+/* ========== NAV ========== */
+nav{
+position:fixed;top:0;width:100%;
+background:rgba(0,0,0,.9);
+padding:15px 30px;
+display:flex;justify-content:space-between;
+z-index:999
+}
+nav a{color:#aaa;margin-left:15px;text-decoration:none}
+nav a:hover{color:#00f7ff}
+
+/* ========== LAYOUT ========== */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center
+}
+
+section{
+padding:100px 8%;
+border-bottom:1px solid rgba(255,255,255,.05)
+}
+
+.lesson{
+background:rgba(255,255,255,.05);
+padding:30px;
+border-radius:20px;
+margin-bottom:50px
+}
+
+/* ========== EDITOR ========== */
+textarea{
+width:100%;
+height:180px;
+background:#000;
+color:#00f7ff;
+border:1px solid rgba(0,247,255,.3);
+border-radius:10px;
+padding:15px
+}
+
+button{
+margin-top:10px;
+padding:10px 25px;
+border-radius:20px;
+border:none;
+background:linear-gradient(90deg,#00f7ff,#9d00ff);
+cursor:pointer;
+font-weight:bold
+}
+
+iframe{
+width:100%;
+height:220px;
+margin-top:15px;
+border-radius:10px;
+background:#fff
+}
+
+footer{
+padding:40px;
+text-align:center;
+opacity:.6
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<b>NEXUS2</b>
+<div>
+<a href="#html">HTML</a>
+<a href="#css">CSS</a>
+<a href="#js">JavaScript</a>
+<a href="#compiler">Compiler</a>
+</div>
+</nav>
+
+<div class="hero">
+<div>
+<h1>NEXUS2</h1>
+<p>Learn Web Development From Zero to Advanced — Interactively</p>
+</div>
+</div>
+
+<!-- ================= HTML ================= -->
+<section id="html">
+<h2>HTML – HyperText Markup Language</h2>
+
+<div class="lesson">
+<h3>HTML Basics</h3>
+<p>HTML uses tags to define structure. Tags usually come in pairs.</p>
+<textarea>
+<h1>Main Heading</h1>
+<p>This is a paragraph.</p>
+</textarea>
+<button onclick="run(this)">Run</button>
+<iframe></iframe>
+</div>
+
+<div class="lesson">
+<h3>HTML Attributes</h3>
+<p>Attributes provide extra information about elements.</p>
+<textarea>
+<img src="https://via.placeholder.com/150" alt="Image">
+<a href="https://example.com">Visit</a>
+</textarea>
+<button onclick="run(this)">Run</button>
+<iframe></iframe>
+</div>
+
+<div class="lesson">
+<h3>Forms & Inputs</h3>
+<textarea>
+<form>
+<input placeholder="Name">
+<input type="email" placeholder="Email">
+<button>Submit</button>
+</form>
+</textarea>
+<button onclick="run(this)">Run</button>
+<iframe></iframe>
+</div>
+
+</section>
+
+<!-- ================= CSS ================= -->
+<section id="css">
+<h2>CSS – Cascading Style Sheets</h2>
+
+<div class="lesson">
+<h3>Selectors</h3>
+<p>Selectors target elements.</p>
+<textarea>
+<style>
+#title{color:red}
+.box{background:black;color:cyan;padding:20px}
+</style>
+
+<h1 id="title">Title</h1>
+<div class="box">Box</div>
+</textarea>
+<button onclick="run(this)">Run</button>
+<iframe></iframe>
+</div>
+
+<div class="lesson">
+<h3>Layout (Flexbox)</h3>
+<textarea>
+<style>
+.container{display:flex;gap:20px}
+.card{background:#00f7ff;color:#000;padding:20px}
+</style>
+
+<div class="container">
+<div class="card">One</div>
+<div class="card">Two</div>
+</div>
+</textarea>
+<button onclick="run(this)">Run</button>
+<iframe></iframe>
+</div>
+
+</section>
+
+<!-- ================= JS ================= -->
+<section id="js">
+<h2>JavaScript – Programming the Web</h2>
+
+<div class="lesson">
+<h3>Variables & Functions</h3>
+<textarea>
+<button onclick="hello()">Click</button>
+<script>
+function hello(){
+alert("Hello World");
+}
+</script>
+</textarea>
+<button onclick="run(this)">Run</button>
+<iframe></iframe>
+</div>
+
+<div class="lesson">
+<h3>DOM Manipulation</h3>
+<textarea>
+<h2 id="t">Change Me</h2>
+<button onclick="change()">Change</button>
+<script>
+function change(){
+document.getElementById("t").innerText="Changed!";
+}
+</script>
+</textarea>
+<button onclick="run(this)">Run</button>
+<iframe></iframe>
+</div>
+
+</section>
+
+<!-- ================= COMPILER ================= -->
+<section id="compiler">
+<h2>Full HTML / CSS / JS Compiler</h2>
+
+<textarea id="full">
+<!DOCTYPE html>
+<html>
+<body>
+<h1>NEXUS2 Compiler</h1>
+<script>
+console.log("Running code");
+</script>
+</body>
+</html>
+</textarea>
+
+<button onclick="document.getElementById('out').srcdoc=full.value">Run Code</button>
+<iframe id="out"></iframe>
+</section>
+
+<footer>
+@DESIGNED AND DEVELOPED BY AHMED-IBNI-QAISAR
+</footer>
+
+<script>
+function run(btn){
+const lesson = btn.parentElement;
+const code = lesson.querySelector("textarea").value;
+lesson.querySelector("iframe").srcdoc = code;
+}
+</script>
+
+</body>
+</html>
+
